@@ -1,2 +1,13 @@
 # PBOT
-#ADD
+a = array variable  (a_Data[])  
+d = define (d_Data)  
+e = enum Type (e_Data)  
+m = enum member (m_Data)  
+f = Function (f_Data)  
+p = Pointer (p_Data)  
+s = struct (s_Data)  
+t = typedef (t_Data)  
+u = Union (u_Data)  
+v = variable (v_Data)  
+g = global variable (gv_Data)  
+l = Local variable (lv_Data)  
