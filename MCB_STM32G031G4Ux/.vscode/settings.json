@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "core_time.h": "c",
+        "core_time_type.h": "c"
+    }
+}
