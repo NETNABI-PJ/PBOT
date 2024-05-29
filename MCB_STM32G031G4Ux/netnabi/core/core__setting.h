@@ -26,4 +26,9 @@
 #define _CORE__SETTING_H_
 #include "../typedef.h"
 
+#define d_CORE_TIME_FREQ_MHZ            64UL //- 64MHz
+#define d_CORE_TIME_FREQ_HZ             (d_CORE_TIME_FREQ_MHZ * 1000000UL)
+#define d_CORE_TIME_CNT_TO_US(CNT)      ((d_CORE_TIME_FREQ_HZ / 1000000UL) / CNT)
+#define d_CORE_TIME_US_TO_CNT(US)       ((d_CORE_TIME_FREQ_HZ / 1000000UL) * US)
+
 #endif

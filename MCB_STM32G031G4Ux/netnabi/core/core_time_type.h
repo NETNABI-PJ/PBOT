@@ -24,7 +24,7 @@
 **************************************************************************************************/
 #ifndef _CORE_TIME_TYPE_H_
 #define _CORE_TIME_TYPE_H_
-#include "../typedef.h"
+#include "core__setting.h"
 
 typedef struct _ts_CoreTime
 {

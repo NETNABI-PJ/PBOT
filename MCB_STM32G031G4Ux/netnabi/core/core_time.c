@@ -46,7 +46,7 @@ void f_CoreTime_Polling_Set(ts_CoreTime *s_Time, uint32 v_TimeUS)
 {
     s_Time->v_PT = d_CORETIME_TIME_CNT;
     s_Time->v_CT = d_CORETIME_TIME_CNT;
-    s_Time->v_ST = 0;
+    s_Time->v_ST = d_CORE_TIME_SET_US(v_TimeUS);
     s_Time->v_TT = 0;
 
 }
@@ -56,21 +56,21 @@ void f_CoreTime_Polling_Set(ts_CoreTime *s_Time, uint32 v_TimeUS)
 //=================================================================================================
 uint32 f_CoreTime_Check(ts_CoreTime* s_Time)
 {
-    static uint32 v_Wait;
-    v_Wait = 1u;
+    static uint32 v_OK;
+    v_OK = 0;
     s_Time->v_CT = d_CORETIME_TIME_CNT;
-    if(s_Time->v_CT != s_Time->v_CT)
+    if(s_Time->v_CT != s_Time->v_PT)
     {
-        if(s_Time->v_CT >= s_Time->v_CT)
-            { s_Time->v_TT += (s_Time->v_CT - s_Time->v_CT); }
+        if(s_Time->v_CT >= s_Time->v_PT)
+            { s_Time->v_TT += (s_Time->v_CT - s_Time->v_PT); }
         else
-            { s_Time->v_TT += (s_Time->v_CT + (0xFFFFFFFF - s_Time->v_CT)); }
+            { s_Time->v_TT += (s_Time->v_CT + (0xFFFFFFFF - s_Time->v_PT)); }
         s_Time->v_CT = s_Time->v_CT;
         if(s_Time->v_TT >= s_Time->v_ST)
         {
             s_Time->v_TT -= s_Time->v_ST;
-            v_Wait = 0u;
+            v_OK++;
         }
     }
-    return(v_Wait);
+    return(v_OK);
 }
